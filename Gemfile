@@ -30,6 +30,7 @@ gem "therubyracer"
 gem "less-rails" 
 gem "cancan"
 gem "twitter-bootstrap-rails"
+gem 'devise'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

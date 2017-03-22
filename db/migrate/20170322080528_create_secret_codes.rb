@@ -6,6 +6,7 @@ class CreateSecretCodes < ActiveRecord::Migration
       t.string :created_by
       t.string :updated_by	 
       t.timestamps
+      add_index :user_id
     end
   end
 end
