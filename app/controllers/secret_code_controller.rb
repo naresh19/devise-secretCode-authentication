@@ -1,14 +1,13 @@
 class SecretCodeController < ApplicationController
-	authorize_resource :only => [:create]
+  load_and_authorize_resource :class => "SecretCodes"
 	def index
-    	@secret_codes = SecretCodes.all
-    	# @secret_codes = SecretCodes.includes(:user).all
+    	@secret_codes = SecretCodes.includes(:user).all
 	end
 
 	def create
 		strong_params = secret_code_params
 		SecretCodes.create_codes strong_params[:count].to_i
-		flash[:now] = params[:count]+" secret code created successfully"
+		flash[:now] = strong_params[:count]+" secret code created successfully"
 		redirect_to :back
 	end	
 

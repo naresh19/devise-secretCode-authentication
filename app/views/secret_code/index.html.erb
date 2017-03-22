@@ -12,7 +12,7 @@
     <% @secret_codes.each do |sc| %>
       <tr>
         <td><%= sc.code %></td>
-        <td><%= sc.user_id %></td>
+        <td><%= sc.user.present? ? sc.user.email : ''  %></td>
         <!-- <td><%#= sc.user.email %></td> -->
       </tr>
     <% end %>
@@ -24,7 +24,7 @@
 </br>
 <div class="my-form-group">
 
-  <%= form_tag({:controller => 'secret_code', :action => 'create'}, :method => "post",id: "secret_code_id",authenticity_token: true) do -%>
+  <%= form_tag({:controller => 'secret_code', :action => 'create'}, :method => "post",id: "secret_code_id") do %>
             <div class=" row  my-form-group " >
               <label class="my-control-label" for="inputNormal"> Create Secret Codes :  </label>
               <%= select_tag "count", options_for_select(SecretCodes::COUNT_OPTIONS,10) %>

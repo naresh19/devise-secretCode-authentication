@@ -2,10 +2,17 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
+ <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first,required: true, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last %>
+  </div>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email%>
   </div>
 
   <div class="field">
@@ -20,10 +27,31 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+    <div class="field">
+        <%= f.label :enter_validation_code %><br />
+        <%= f.text_field :secret_code,required: true%>
+      <%= @secret_code.code %>
+      <%= f.hidden_field :actual_secret_code, :value => @secret_code.code  %>
+
+          </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up" ,id: "submit"%>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+    $( document ).ready(function() {
+        $('#submit').on("click", function (e) {
+           sc = $('#user_actual_secret_code').val();
+           user_entered_sc = $('#user_secret_code').val();
+            if(sc != user_entered_sc){
+                alert("Please enter correct secret code");
+                return false;
+            }
+            return true;
+        });
+    });
+</script>

@@ -12,5 +12,10 @@ class SecretCodes < ActiveRecord::Base
 			codes << SecretCodes.create(code: code)
 		end
 		codes
-	end
+  end
+
+  def assign_user_to_security_code user_id
+    self.user_id = user_id
+    self.save!
+  end
 end
