@@ -1,0 +1,34 @@
+<h1> Secret Codes</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @secret_codes.each do |sc| %>
+      <tr>
+        <td><%= sc.code %></td>
+        <td><%= sc.user_id %></td>
+        <!-- <td><%#= sc.user.email %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>  
+
+</br>
+</br>
+</br>
+<div class="my-form-group">
+
+  <%= form_tag({:controller => 'secret_code', :action => 'create'}, :method => "post",id: "secret_code_id",authenticity_token: true) do -%>
+            <div class=" row  my-form-group " >
+              <label class="my-control-label" for="inputNormal"> Create Secret Codes :  </label>
+              <%= select_tag "count", options_for_select(SecretCodes::COUNT_OPTIONS,10) %>
+              <%= submit_tag 'create' ,class: "btn btn-success btn-confirm btn-action "%>
+            </div>
+  <% end -%>
+</div>
