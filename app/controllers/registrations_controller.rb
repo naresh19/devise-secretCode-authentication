@@ -1,9 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
-    offset = rand(SecretCodes.count)
-    @secret_code = SecretCodes.offset(offset).first
+    offset = rand(SecretCodes.available.count)
+    @secret_code = SecretCodes.available.offset(offset).first
+    if @secret_code.present?
+      super
+    else
+      flash[:error] = "Please request for secret code generation to admin user"
+      redirect_to :back
+    end
 
-    super
   end
 
   def create

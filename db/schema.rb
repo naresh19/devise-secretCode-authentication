@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20170322195637) do
 
-  create_table "products", force: true do |t|
-    t.string   "name"
-    t.decimal  "price",      precision: 10, scale: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "roles", force: true do |t|
     t.string   "name",       null: false
     t.string   "created_by"
@@ -36,6 +29,8 @@ ActiveRecord::Schema.define(version: 20170322195637) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "secret_codes", ["code"], name: "index_secret_codes_on_code", using: :btree
 
   create_table "user_role_maps", force: true do |t|
     t.integer  "user_id"

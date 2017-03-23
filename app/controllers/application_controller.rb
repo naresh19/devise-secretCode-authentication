@@ -73,10 +73,10 @@ class ApplicationController < ActionController::Base
   end
 
 
-
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
-  end
+  #uncomment this to rescue can can exceptions
+  #rescue_from CanCan::AccessDenied do |exception|
+  #  redirect_to root_url, :alert => exception.message
+  #end
 
 
 

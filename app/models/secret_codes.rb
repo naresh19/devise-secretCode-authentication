@@ -18,4 +18,6 @@ class SecretCodes < ActiveRecord::Base
     self.user_id = user_id
     self.save!
   end
+
+  scope :available,->{where("user_id is NUll")}
 end

@@ -15,7 +15,7 @@ class Ability
     debugger
     user.roles.each do |role|
       if (role.name ==  "admin")
-        can [:manage], :all
+        can [:manage], SecretCodes
       end
     end
 

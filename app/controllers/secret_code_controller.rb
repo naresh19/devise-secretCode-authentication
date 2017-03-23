@@ -1,6 +1,9 @@
 class SecretCodeController < ApplicationController
   load_and_authorize_resource :class => "SecretCodes"
-	def index
+
+  #show all secrets codes
+  #scope-> action handling
+  def index
     	@secret_codes = SecretCodes.includes(:user).all
 	end
 
