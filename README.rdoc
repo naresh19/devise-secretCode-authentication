@@ -3,26 +3,16 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+    * Ruby version  - 2.0.0-p648
+    * Rails version  - 4.0.0
+    * Instructions for bootstrap of application
+    1. rake db:create
+    2. rake db:migrate
+    3. rake db:seed
+    4. Login from user admin@gmail.com using password "admin123" and add secrets codes in the application.
+    5. Login from user normal_user@gmail.com using password "normal_user123" to check can can authorization.
+    6. Signup using new email id for explorng further.
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
